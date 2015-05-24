@@ -1,0 +1,95 @@
+﻿body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;}
+fieldset,img,a img,iframe,html,body{border:0;}
+li{list-style:none;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+del,ins{text-decoration:none;}
+[hidefocus]{outline:0;}
+textarea,input,button,select{font-size:inherit;line-height:inherit;color:inherit;font-family:inherit;}
+textarea{overflow:auto;resize:none;}
+body{word-wrap:break-word;font:12px/normal arial,simsun;color:#333;background:#fff;}
+h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;}
+a,button{cursor:pointer;}
+a,a:hover{text-decoration:none;color:#333;}
+
+html,body, #main, .panel{width:100%;height:100%;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;user-select:none;}
+
+body {
+  background: #222 scroll;
+  font-size: 13px;
+}
+.hide {
+  display: none;
+}
+#login > div {
+  padding: 10px;
+  width: 333px;
+  height: 100px;
+  margin: 150px auto 0;
+}
+
+#login h1{
+  text-align: center;
+  margin-top: 85px;
+  font-family: 'Comic Sans MS', cursive;
+  line-height: 1em;
+  letter-spacing: 5px;
+  color: #b0ab99;
+  font-weight:bold;
+  font-size: 134px;
+  text-shadow:0px 0px 0 rgb(157,152,134),1px 1px 0 rgb(148,143,125),2px 2px 0 rgb(138,133,115),3px 3px 0 rgb(129,124,106),4px 4px 0 rgb(120,115,97),5px 5px 0 rgb(111,106,88),6px 6px 0 rgb(101,96,78),7px 7px 0 rgb(92,87,69),8px 8px 0 rgb(83,78,60), 9px 9px 0 rgb(74,69,51),10px 10px 9px rgba(0,0,0,0.25),10px 10px 1px rgba(0,0,0,0.5),0px 0px 9px rgba(0,0,0,.2);
+}
+
+#login .btn {
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+}
+#login input{
+  height: 29px;
+  width: 210px;
+  font-size: 19px;
+}
+.panel {
+  display: none;
+}
+.panel.current {
+  display: block;
+}
+#rank{
+  position: absolute;
+  width: 190px;
+  /*opacity: 0.75;*/
+  /*background-color: #333;*/
+  color: #fff;
+  padding:12px;
+  border: 1px solid green;
+  top: 35px;
+  right: 32px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 0 6px #000;
+  overflow: hidden;
+}
+#rank .header{
+  text-align: center;
+  border-bottom: solid 1px white;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+#rank li{
+  padding: 2px 8px;
+}
+#rank li span{
+  width: 50%;
+  text-align: left;
+  display: inline-block;
+}
+#rank li span:last-child{
+  text-align: right;
+}

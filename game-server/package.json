@@ -1,0 +1,11 @@
+{
+    "name":"treasures",
+    "version":"0.0.1",
+    "private":false,
+    "dependencies":{
+        "pomelo":"1.1.7", 
+		"crc" : ">=0.0.1", 
+		"pomelo-collection": ">=0.1.0", 
+		"pomelo-logger": "0.0.2" 
+    }
+}

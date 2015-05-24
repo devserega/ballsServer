@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Treasure -- a demo of Pomelo</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="author" content="netease" />
+    <meta name="version" content="1.0" />
+    <meta name="keywords" content="pomelo" />
+    <meta name="description" content="pomelo, pomelojs, game, demo" />
+    <link type="text/css" rel="stylesheet" href="/css/base.css" />
+
+    <script src="js/lib/build/build.js" type="text/javascript"></script>
+    <script type="text/javascript">        
+        require('boot');
+    </script>
+
+    <script src='/js/lib/colorbox/colorbox_header.js'></script>
+    <script src='/js/lib/colorbox/Box2dWeb-2.1.a.3.js'></script>
+    <script src='/js/lib/colorbox/JXGUtil.js'></script>
+    <script src='/js/lib/colorbox/base.js'></script>
+    <script src='/js/lib/colorbox/base64.js'></script>
+    <script src='/js/lib/colorbox/clocker.js'></script>
+    <script src='/js/lib/colorbox/debug.js'></script>
+    <script src='/js/lib/colorbox/geometry.js'></script>
+    <script src='/js/lib/colorbox/gzip.js'></script>
+    <script src='/js/lib/colorbox/helper.js'></script>
+    <script src='/js/lib/colorbox/oo.js'></script>
+    <script src='/js/lib/colorbox/path.js'></script>
+    <script src='/js/lib/colorbox/pathfinding.js'></script>
+    <script src='/js/lib/colorbox/platform.js'></script>
+    <script src='/js/lib/colorbox/processing.js'></script>
+    <script src='/js/lib/colorbox/util.js'></script>
+    <script src='/js/lib/colorbox/xmlload.js'></script>
+    <script src='/js/lib/colorbox/resmgr.js'></script>
+    <script src='/js/lib/colorbox/canvaseventdecider.js'></script>
+    <script src='/js/lib/colorbox/component.js'></script>
+    <script src='/js/lib/colorbox/gui/button.js'></script>
+    <script src='/js/lib/colorbox/gui/slidebar.js'></script>
+    <script src='/js/lib/colorbox/logic.js'></script>
+    <script src='/js/lib/colorbox/matrix.js'></script>
+    <script src='/js/lib/colorbox/model.js'></script>
+    <script src='/js/lib/colorbox/node.js'></script>
+    <script src='/js/lib/colorbox/particle.js'></script>
+    <script src='/js/lib/colorbox/physicsnode.js'></script>
+    <script src='/js/lib/colorbox/pipe.js'></script>
+    <script src='/js/lib/colorbox/scene.js'></script>
+    <script src='/js/lib/colorbox/sound.js'></script>
+    <script src='/js/lib/colorbox/tiled_map.js'></script>
+    <script src='/js/lib/colorbox/frameanimation.js'></script>
+    <script src='/js/lib/colorbox/view/index.js'></script>
+    <script src='/js/lib/colorbox/view/honestview.js'></script>
+    <script src='/js/lib/colorbox/view/processingview.js'></script>
+    <script src='/js/lib/colorbox/animate.js'></script>
+    <script src='/js/lib/colorbox/director.js'></script>
+    <script src='/js/lib/colorbox/level.js'></script>
+    <script src='/js/lib/colorbox/leveltransition.js'></script>
+    <script src='/js/lib/colorbox/colorbox_module.js'></script>
+
+    <script src="/js/models/entity.js" type="text/javascript"></script>
+    <script src="/js/models/area.js" type="text/javascript"></script>
+    <script src="/js/models/map.js" type="text/javascript"></script>
+    <script src="/js/models/player.js" type="text/javascript"></script>
+    <script src="/js/models/sprite.js" type="text/javascript"></script>
+    <script src="/js/models/treasure.js" type="text/javascript"></script>
+    <script src="/js/models/animation.js" type="text/javascript"></script>
+    <script src="/js/models/noEntityNode.js" type="text/javascript"></script>
+    <script src="/js/config/config.js" type="text/javascript"></script>
+    <script src="/js/config/consts.js" type="text/javascript"></script>
+    <script src="/js/utils/utils.js" type="text/javascript"></script>
+    <script src="/js/utils/dataApi.js" type="text/javascript"></script>
+    <script src="/js/main.js" type="text/javascript"></script>
+    <script src="/js/clientManager.js" type="text/javascript"></script>
+    <script src="/js/componentAdder.js" type="text/javascript"></script>
+    <script src="/js/msgHandler.js" type="text/javascript"></script>
+    <script src="/js/app.js" type="text/javascript"></script>
+  </head>
+  <body>
+  <div id="main">
+    <div id="login" class="panel current">
+      <h1>Treasures</h1>
+      <div>
+        <input type="text" placeholder="type a name...">
+        <button class="btn">Start Game</button>
+      </div>
+    </div>
+    <div id="game" class="panel"></div>
+    <div id="rank" class="hide">
+      <div class="header">High Scores</div>
+      <ul></ul>
+    </div>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="game-server-remote-connector-32310" type="NodeJSRemoteDebug" factoryName="Node.js Remote Debug" singleton="true">
+    <node-js-remote-debug host="192.168.0.100" debug-port="32310" />
+    <method />
+  </configuration>
+</component>
