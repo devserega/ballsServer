@@ -12,6 +12,8 @@ var Handler = function(app) {
 	this.app = app;
 };
 
+//var pro = Handler.prototype; //for debugger
+
 Handler.prototype.queryEntry = function(msg, session, next) {
 	var uid = msg.uid;
 	if (!uid) {
