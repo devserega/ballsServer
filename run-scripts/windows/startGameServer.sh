@@ -14,7 +14,7 @@ echo "srcipt=[${SCRIPT_PATH}/game-server]"
 #echo "pwd   =[`pwd`]"
 
 echo '============  start game-server ============'
-#pomelo start -d "${SCRIPT_PATH}/../../game-server"
 cd ../../game-server
-pomelo start #node app.js
-sleep 5
+#alternative: node app.js OR pomelo start -d "${SCRIPT_PATH}/../../game-server"
+pomelo start 
+sleep 1
