@@ -12,9 +12,9 @@ var Handler = function(app) {
 	this.app = app;
 };
 
-//var pro = Handler.prototype; //for debugger
+var pro = Handler.prototype; // need for local debugging at WebStorm
 
-Handler.prototype.queryEntry = function(msg, session, next) {
+pro.queryEntry = function(msg, session, next) {
 	var uid = msg.uid;
 	if (!uid) {
 		next(null, {code: Code.FAIL});

@@ -1,8 +1,8 @@
 {
   "development":{
     "connector": [
-    {"id": "connector-server-1", "host": "192.168.0.104", "port": 3150, "clientPort": 3010, "frontend": true, "args": " --debug=32310 "},
-	{"id": "connector-server-2", "host": "192.168.0.104", "port": 3151, "clientPort": 3011, "frontend": true, "args": " --debug=32311 "}
+    {"id": "connector-server-1", "host": "192.168.0.104", "port": 3150, "clientPort": 3010, "frontend": true},
+	{"id": "connector-server-2", "host": "192.168.0.104", "port": 3151, "clientPort": 3011, "frontend": true}
     ],
 	"area": [
       {"id": "area-server-1", "host": "192.168.0.104", "port": 3250, "areaId": 1, "args": " --debug=32313 "}
