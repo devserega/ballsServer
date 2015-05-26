@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a26abd5f-e159-4f60-8c83-2620fa4a1af3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../web-server/public/js/clientManager.js" afterPath="$PROJECT_DIR$/../web-server/public/js/clientManager.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="game-server.iws" />
@@ -515,7 +514,13 @@
       <option name="project" value="LOCAL" />
       <updated>1432652573504</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="modify">
+      <created>1432652682418</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1432652682418</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
