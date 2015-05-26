@@ -5,16 +5,16 @@ var dispatcher = require('../../../util/dispatcher');
  * Gate handler that dispatch user to connectors.
  */
 module.exports = function(app) {
-	return new Handler(app);
+	return new HandlerGate(app);
 };
 
-var Handler = function(app) {
+var HandlerGate = function(app) {
 	this.app = app;
 };
 
-var pro = Handler.prototype; // need for local debugging at WebStorm
+var proGate = HandlerGate.prototype; // need for local debugging at WebStorm
 
-pro.queryEntry = function(msg, session, next) {
+proGate.queryEntry = function(msg, session, next) {
 	var uid = msg.uid;
 	if (!uid) {
 		next(null, {code: Code.FAIL});

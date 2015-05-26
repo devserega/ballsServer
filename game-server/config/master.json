@@ -1,14 +1,14 @@
 {
   "development": {
     "id": "master-server-1", 
-	"host": "192.168.0.104",
+	"host": "217.147.160.112",
 	"port": 3005,
 	"queryPort":3015,
     "wsPort":2337
   },
   "production": {
     "id": "master-server-1", 
-	"host": "192.168.0.104", 
+	"host": "217.147.160.112",
 	"port": 3005,
 	"queryPort":3015,
     "wsPort":2337

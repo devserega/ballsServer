@@ -24,6 +24,7 @@ var handler = module.exports;
 handler.enterScene = function(msg, session, next) {
   var role = dataApi.role.random();
   var player = new Player({id: msg.playerId, name: msg.name, kindId: role.id});
+  player.balls.push(new Ball({id: msg.playerId, name: msg.name, kindId: role.id}));
   //player.balls.push(new Ball({id: msg.playerId, name: msg.name, kindId: role.id}));
 
   player.serverId = session.frontendId;
@@ -85,6 +86,7 @@ handler.getAnimation = function(msg, session, next) {
  * @api public
  */
 handler.move = function(msg, session, next) {
+    /*
   var endPos = msg.targetPos;
   var playerId = session.get('playerId');
   var player = area.getPlayer(playerId);
@@ -110,7 +112,7 @@ handler.move = function(msg, session, next) {
 
   var action = new Move({
     entity: player,
-    endPos: endPos,
+    endPos: endPos
   });
 
   if (area.timer().addAction(action)) {
@@ -120,6 +122,59 @@ handler.move = function(msg, session, next) {
     });
 
     area.getChannel().pushMessage({route: 'onMove', entityId: player.entityId, endPos: endPos});
+  }*/
+};
+
+/**
+ * Player moves. Player requests move with the given movePath.
+ * Handle the request from client, and response result to client
+ *
+ * @param {Object} msg
+ * @param {Object} session
+ * @param {Function} next
+ * @api public
+ */
+handler.moveTo = function(msg, session, next) {
+  var endPos = msg.targetPos;
+  var playerId = session.get('playerId');
+  var player = area.getPlayer(playerId);
+  if (!player) {
+    logger.error('Move without a valid player ! playerId : %j', playerId);
+    next(new Error('invalid player:' + playerId), {
+      code: consts.MESSAGE.ERR
+    });
+    return;
   }
+
+  /*
+  var target = area.getEntity(msg.target);
+  player.target = target ? target.entityId : null;
+
+  if (endPos.x > area.width() || endPos.y > area.height()) {
+    logger.warn('The path is illigle!! The path is: %j', msg.path);
+    next(new Error('fail to move for illegal path'), {
+      code: consts.MESSAGE.ERR
+    });
+
+    return;
+  }
+
+  var action = new Move({
+    entity: player,
+    endPos: endPos
+  });
+
+  if (area.timer().addAction(action)) {
+    next(null, {
+      code: consts.MESSAGE.RES,
+      sPos: player.getPos()
+    });
+
+    area.getChannel().pushMessage({route: 'onMove', entityId: player.entityId, endPos: endPos});
+  }*/
+  //player.getPos()
+  //var curPos = getPos(this.entity.getPos(), this.endPos, moveLength, dis);
+  player.setPos(endPos.x, endPos.y);
+  area.getChannel().pushMessage({route: 'onMove', entityId: player.entityId, endPos: endPos});
 };
 

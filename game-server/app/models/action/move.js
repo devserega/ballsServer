@@ -12,13 +12,13 @@ var Move = function(opts) {
 	Action.call(this, opts);
 	this.time = Date.now();
 	this.entity = opts.entity;
-  this.endPos = opts.endPos;
+    this.endPos = opts.endPos;
 };
 
 util.inherits(Move, Action);
 
 Move.prototype.update = function() {
-	var time = Date.now() - this.time;
+  var time = Date.now() - this.time;
   var speed = this.entity.walkSpeed;
   var moveLength = speed * time / 1000;
   var dis = getDis(this.entity.getPos(), this.endPos);

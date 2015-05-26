@@ -1,15 +1,15 @@
 var Code = require('../../../../../shared/code');
 
 module.exports = function(app) {
-  return new Handler(app);
+  return new HandlerConnector(app);
 };
 
-var Handler = function(app) {
+var HandlerConnector = function(app) {
   this.app = app;
   this.serverId = app.get('serverId').split('-')[2];
 };
 
-var pro = Handler.prototype;
+var proConnector = HandlerConnector.prototype;
 
 // generate playerId
 var id = 1;
@@ -22,7 +22,7 @@ var id = 1;
  * @param  {Function} next    next stemp callback
  * @return {Void}
  */
-pro.entry = function(msg, session, next) {
+proConnector.entry = function(msg, session, next) {
   var self = this;
   var playerId = parseInt(this.serverId + id, 10);
   id += 1;

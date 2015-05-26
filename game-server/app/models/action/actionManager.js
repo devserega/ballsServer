@@ -2,7 +2,7 @@ var Queue = require('pomelo-collection').queue;
 var logger = require('pomelo-logger').getLogger(__filename);
 
 /**
- * Action Manager, which is used to contrll all action
+ * Action Manager, which is used to control all action
  */
 var ActionManager = function(opts){
 	opts = opts||{};

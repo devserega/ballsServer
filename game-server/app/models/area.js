@@ -29,15 +29,16 @@ var treasureCount = 0;
  * @api public
  */
 exp.init = function(opts) {
-	id = opts.id;
-  width = opts.width;
-  height = opts.height;
+    id = opts.id;
+    width = opts.width;
+    height = opts.height;
 
-  actionManager = new ActionManager();
-  //serega exp.generateTreasures(40);
+    actionManager = new ActionManager();
+    //serega
+    exp.generateTreasures(200);
 
-  //area run
-  timer.run();
+    //area run
+    timer.run();
 };
 
 var getChannel = exp.getChannel= function() {
@@ -45,6 +46,7 @@ var getChannel = exp.getChannel= function() {
     return channel;
   }
 
+  // serega
   channel = pomelo.app.get('channelService').getChannel('area_' + id, true);
   return channel;
 };
@@ -114,6 +116,7 @@ exp.rankUpdate = function () {
       return a.score < b.score;
     });
     var ids = player.slice(0, 10).map(function(a){ return a.entityId; });
+    //serega
     getChannel().pushMessage({route: 'rankUpdate', entities: ids});
   }
 };
