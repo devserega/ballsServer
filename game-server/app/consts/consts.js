@@ -1,13 +1,13 @@
 module.exports = {
 
-  RES_CODE : {
-    SUC_OK                  :  1,   // success
-    ERR_FAIL								: -1,		// Failded without specific reason
-    ERR_USER_NOT_LOGINED		: -2,		// User not login
-    ERR_CHANNEL_DESTROYED		: -10,	// channel has been destroyed
-    ERR_SESSION_NOT_EXIST   : -11,	// session not exist
-    ERR_CHANNEL_DUPLICATE   : -12,	// channel duplicated
-    ERR_CHANNEL_NOT_EXIST   : -13		// channel not exist
+  RES_CODE: {
+    SUC_OK: 1,   // success
+    ERR_FAIL: -1,		// Failded without specific reason
+    ERR_USER_NOT_LOGINED: -2,		// User not login
+    ERR_CHANNEL_DESTROYED: -10,	// channel has been destroyed
+    ERR_SESSION_NOT_EXIST: -11,	// session not exist
+    ERR_CHANNEL_DUPLICATE: -12,	// channel duplicated
+    ERR_CHANNEL_NOT_EXIST: -13		// channel not exist
   },
 
   MESSAGE: {
@@ -20,7 +20,12 @@ module.exports = {
     PLAYER: 'player',
     TREASURE: 'treasure',
     BALL: 'ball'
+  },
+
+  TREASURES: {
+    MAX: 10,
+    Ticks4Respawn: 100 // 10 seconds
   }
 
-};
 
+};

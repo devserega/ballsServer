@@ -135,46 +135,46 @@ handler.move = function(msg, session, next) {
  * @api public
  */
 handler.moveTo = function(msg, session, next) {
-  var endPos = msg.targetPos;
-  var playerId = session.get('playerId');
-  var player = area.getPlayer(playerId);
-  if (!player) {
-    logger.error('Move without a valid player ! playerId : %j', playerId);
-    next(new Error('invalid player:' + playerId), {
-      code: consts.MESSAGE.ERR
-    });
-    return;
-  }
+    var endPos = msg.targetPos;
+    var playerId = session.get('playerId');
+    var player = area.getPlayer(playerId);
+    if (!player) {
+     logger.error('Move without a valid player ! playerId : %j', playerId);
+     next(new Error('invalid player:' + playerId), {
+         code: consts.MESSAGE.ERR
+     });
+     return;
+    }
 
-  /*
-  var target = area.getEntity(msg.target);
-  player.target = target ? target.entityId : null;
+    var target = area.getEntity(msg.target);
+    player.target = target ? target.entityId : null;
 
-  if (endPos.x > area.width() || endPos.y > area.height()) {
-    logger.warn('The path is illigle!! The path is: %j', msg.path);
-    next(new Error('fail to move for illegal path'), {
-      code: consts.MESSAGE.ERR
-    });
+    if (endPos.x > area.width() || endPos.y > area.height()) {
+        logger.warn('The path is illigle!! The path is: %j', msg.path);
+        next(new Error('fail to move for illegal path'), {
+            code: consts.MESSAGE.ERR
+        });
 
-    return;
-  }
+        return;
+    }
 
-  var action = new Move({
-    entity: player,
-    endPos: endPos
-  });
-
-  if (area.timer().addAction(action)) {
-    next(null, {
-      code: consts.MESSAGE.RES,
-      sPos: player.getPos()
+    var action = new Move({
+        entity: player,
+        endPos: endPos
     });
 
-    area.getChannel().pushMessage({route: 'onMove', entityId: player.entityId, endPos: endPos});
-  }*/
-  //player.getPos()
-  //var curPos = getPos(this.entity.getPos(), this.endPos, moveLength, dis);
-  player.setPos(endPos.x, endPos.y);
-  area.getChannel().pushMessage({route: 'onMove', entityId: player.entityId, endPos: endPos});
+    if (area.timer().addAction(action)) {
+        next(null, {
+            code: consts.MESSAGE.RES,
+            sPos: player.getPos()
+        });
+
+        area.getChannel().pushMessage({route: 'onMove', entityId: player.entityId, endPos: endPos});
+    }
+    //  var curPos = getPos(this.entity.getPos(), this.endPos, moveLength, dis);
+
+
+    //player.setPos(endPos.x, endPos.y);
+    //area.getChannel().pushMessage({route: 'onMove', entityId: player.entityId, endPos: endPos});
 };
 

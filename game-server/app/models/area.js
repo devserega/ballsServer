@@ -6,6 +6,7 @@ var timer = require('./timer');
 var EntityType = require('../consts/consts').EntityType;
 var logger = require('pomelo-logger').getLogger(__filename);
 var Treasure = require('./treasure');
+var consts = require('../consts/consts');
 
 var exp = module.exports;
 
@@ -35,7 +36,7 @@ exp.init = function(opts) {
 
     actionManager = new ActionManager();
     //serega
-    exp.generateTreasures(200);
+    exp.generateTreasures(consts.TREASURES.MAX);
 
     //area run
     timer.run();
@@ -130,23 +131,23 @@ exp.removeEntity = function(entityId) {
 	var e = entities[entityId];
 	if (!e) {
 		return true;
-  }
+    }
 
 	if (e.type === EntityType.PLAYER) {
 		getChannel().leave(e.id, e.serverId);
 		actionManager.abortAllAction(entityId);
 			
-    delete players[e.id];
-  } else if (e.type === EntityType.TREASURE) {
-    treasureCount--;
-    if (treasureCount < 25) {
-      exp.generateTreasures(15);
-    }
+        delete players[e.id];
+    } else if (e.type === EntityType.TREASURE) {
+        treasureCount--;
+        //if (treasureCount < 25) {
+        //    exp.generateTreasures(15);
+        //}
 	}
 
-  delete entities[entityId];
-  reduced.push(entityId);
-  return true;
+    delete entities[entityId];
+    reduced.push(entityId);
+    return true;
 };
 
 /**
@@ -244,3 +245,15 @@ exp.timer = function() {
 	return timer;
 };
 
+var treasuresTicksCounter = consts.TREASURES.Ticks4Respawn;
+exp.TreasuresUpdate = function () {
+    if (treasuresTicksCounter <= 0) {
+        treasuresTicksCounter = consts.TREASURES.Ticks4Respawn;
+
+        var res = consts.TREASURES.MAX-treasureCount;
+        if (res > 0)
+            exp.generateTreasures(res);
+    }
+    else
+        treasuresTicksCounter--;
+};

@@ -13,6 +13,7 @@ function tick() {
   area.actionManager().update();
   area.entityUpdate();
   area.rankUpdate();
+  area.TreasuresUpdate();
 }
 
 /**
