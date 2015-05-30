@@ -20,13 +20,12 @@ function Entity(opts) {
 	this.kindName = opts.kindName;
 	this.areaId = opts.areaId || 1;
 
-  if (opts.x === undefined || opts.y === undefined) {
-    this.randPos();
-  } else {
-    this.x = opts.x;
-    this.y = opts.y;
-  }
-	
+    if (opts.x === undefined || opts.y === undefined) {
+      this.randPos();
+    } else {
+      this.x = opts.x;
+      this.y = opts.y;
+    }
 }
 
 util.inherits(Entity, EventEmitter);

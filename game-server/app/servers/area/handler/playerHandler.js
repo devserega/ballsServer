@@ -39,13 +39,7 @@ handler.enterScene = function(msg, session, next) {
     return;
   }
 
-  next(null, {
-    code: consts.MESSAGE.RES,
-    data: {
-      area: area.getAreaInfo(), 
-      playerId: player.id
-    }
-  });
+  next(null, {code: consts.MESSAGE.RES, data: {area: area.getAreaInfo(), playerId: player.id}});
 };
 
 /**
@@ -158,6 +152,7 @@ handler.moveTo = function(msg, session, next) {
         return;
     }
 
+    /*
     var action = new Move({
         entity: player,
         endPos: endPos
@@ -170,11 +165,32 @@ handler.moveTo = function(msg, session, next) {
         });
 
         area.getChannel().pushMessage({route: 'onMove', entityId: player.entityId, endPos: endPos});
-    }
+    }*/
     //  var curPos = getPos(this.entity.getPos(), this.endPos, moveLength, dis);
 
 
-    //player.setPos(endPos.x, endPos.y);
-    //area.getChannel().pushMessage({route: 'onMove', entityId: player.entityId, endPos: endPos});
+    player.setPos(endPos.x, endPos.y);
+    area.getChannel().pushMessage({route: 'onMove', entityId: player.entityId, endPos: endPos});
 };
 
+handler.PickUp = function(msg, session, next) {
+    var playerId = session.get('playerId');
+    var player = area.getPlayer(playerId);
+    if (!player) {
+        logger.error('PickUp without a valid player ! playerId : %j', playerId);
+        next(new Error('invalid player:' + playerId), {code: consts.MESSAGE.ERR});
+        return;
+    }
+
+    // add anti hack check
+    //  ...
+
+    //logger.info('HQCORE entityForDestroy = %j, entityIdForGrow = %j', msg.entityIdForDestroy, msg.entityIdForGrow);
+    var entityForDestroy = area.getEntity(msg.entityIdForDestroy);
+    var entityForGrow = area.getEntity(msg.entityIdForGrow);
+    if (entityForDestroy && entityForGrow) {
+        player.addScore(entityForDestroy.score);
+        area.removeEntity(msg.entityIdForDestroy);
+        area.getChannel().pushMessage({route: 'onPickItem', entityId: msg.entityIdForGrow, target: msg.entityIdForDestroy});//, score: 0
+    }
+};
