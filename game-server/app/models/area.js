@@ -24,6 +24,8 @@ var channel = null;
 
 var treasureCount = 0;
 
+var usersSettings = {}; // save score hear
+
 /**
  * Init areas
  * @param {Object} opts
@@ -80,7 +82,7 @@ exp.entityUpdate = function() {
   }
 };
 /**
- * Add entity to area
+ * Add entity to area (changed)
  * @param {Object} e Entity to add to the area.
  */
 exp.addEntity = function(e) {
@@ -94,30 +96,55 @@ exp.addEntity = function(e) {
         getChannel().add(e.id, e.serverId);
         addEvent(e);
 		
-        if (!!players[e.id]) {
-            logger.error('add player twice! player : %j', e);
-        }
-        players[e.id] = e.entityId;
+        //if (!!players[e.id]) {
+        //    logger.error('add player twice! player : %j', e);
+        //}
+
+        //old players[e.id] = e.entityId;
+        if(players[e.id]==undefined)
+            players[e.id]=[];
+
+        players[e.id].push(e.entityId);
+
+        // init user settings
+        if(usersSettings[e.id]==undefined)
+            usersSettings[e.id]={};
     } else if (e.type === EntityType.TREASURE) {
         treasureCount++;
     }
 
     added.push(e);
-	    return true;
+    return true;
 };
 
-// player score rank
+// player score rank (changed)
 var tickCount = 0;
 exp.rankUpdate = function () {
     tickCount ++;
+
     if (tickCount >= 10) {
         tickCount = 0;
-        var player = exp.getAllPlayers();
-        player.sort(function(a, b) {
-            return a.score < b.score;
-        });
-        var ids = player.slice(0, 10).map(function(a){ return a.entityId; });
-        //serega
+
+        var entSize=0;
+        var ent = exp.getAllEntities();
+        for (var key in ent) {
+            if (ent.hasOwnProperty(key)) entSize++;
+        }
+
+        var playersEntities = exp.getAllPlayers();
+        //var player = exp.getAllPlayers();
+        //logger.warn('PLAYERS in game = %j , AE = %j', player.length, entSize);
+        //player.sort(function(a, b) {
+        //    return a.score < b.score;
+        //});
+
+        // need fix
+        var ids=[];
+        for(var index in playersEntities){
+            ids.push(playersEntities[index].entityId);
+        }
+
+        //var ids = player.slice(0, 10).map(function(a){ return a.entityId; });
         getChannel().pushMessage({route: 'rankUpdate', entities: ids});
     }
 };
@@ -174,11 +201,22 @@ exp.getEntities = function(ids) {
 	return result;
 };
 
+// changed (maybe slow)
 exp.getAllPlayers = function() {
 	var _players = [];
+    for (var id in players) {
+        var ids = players[id];
+        if(ids!=undefined) {
+            for (var index in ids) {
+                _players.push(entities[ids[index]]);
+            }
+        }
+    }
+
+    /* old
 	for (var id in players) {
 		_players.push(entities[players[id]]);
-	}	
+	}*/
 	
 	return _players;
 };
@@ -198,18 +236,46 @@ exp.getAllEntities = function() {
 	return entities;
 };
 
+// changed
 exp.getPlayer = function(playerId) {
+    var _entities = [];
+    var entitiesIds = players[playerId];
+    for (var key in entitiesIds) {
+        _entities.push(entities[entitiesIds[key]]);
+    }
+    //var _entities = entitiesIds.map(function(a){return entities[a];});
+
+    return _entities;
+
+    /* old
 	var entityId = players[playerId];
-    return entities[entityId];
+    return entities[entityId];*/
 };
 
+// changed
 exp.removePlayer = function(playerId) {
+    for (var key in entities) {
+        var e = entities[key];
+        if (e.type === EntityType.PLAYER && e.id === playerId) {
+            this.removeEntity(e.entityId);
+        }
+    }
+
+    if(players[playerId]!=undefined){
+        logger.warn('remove PLAYER');
+        delete players[playerId];
+    }
+
+    // clean user settings
+    delete usersSettings[playerId];
+
+    /* old
 	var entityId = players[playerId];
 
 	if (entityId) {
 		delete players[playerId];
 		this.removeEntity(entityId);
-	}
+	}*/
 };
 
 /**

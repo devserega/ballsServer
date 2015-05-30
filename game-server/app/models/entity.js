@@ -19,6 +19,7 @@ function Entity(opts) {
 	this.kindId = opts.kindId;
 	this.kindName = opts.kindName;
 	this.areaId = opts.areaId || 1;
+    //this.parts = []; // not used yet
 
     if (opts.x === undefined || opts.y === undefined) {
       this.randPos();

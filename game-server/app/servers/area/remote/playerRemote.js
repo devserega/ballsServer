@@ -7,7 +7,6 @@ var area = require('../../../models/area');
 var consts = require('../../../consts/consts');
 // var messageService = require('../../../models/messageService');
 
-
 var exp = module.exports;
 
 /**
@@ -30,4 +29,3 @@ exp.playerLeave = function(args, cb) {
 	area.getChannel().pushMessage({route: 'onUserLeave', code: consts.MESSAGE.RES, playerId: playerId});
 	utils.invokeCallback(cb);
 };
-

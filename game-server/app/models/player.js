@@ -21,8 +21,6 @@ function Player(opts) {
   this.walkSpeed = 240;
   this.score = opts.score || 0;
   this.target = null;
-
-  this.balls = [];
 }
 
 util.inherits(Player, Entity);
