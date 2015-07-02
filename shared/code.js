@@ -10,5 +10,13 @@ module.exports = {
 
 	GATE: {
 		FA_NO_SERVER_AVAILABLE: 2001
-	}
+	},
+    
+    CONNECTOR: {
+        FA_NO_SERVER_AVAILABLE: 2002
+    },
+    
+    AREA: {
+        FA_NO_SERVER_AVAILABLE: 2003
+    }
 };

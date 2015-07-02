@@ -17,15 +17,12 @@ module.exports = {
   },
 
   EntityType: {
-    PLAYER: 'player',
-    TREASURE: 'treasure',
-    BALL: 'ball'
+    PLAYER: 'player', // player
+    TREASURE: 'treasure' //treasure
   },
 
   TREASURES: {
-    MAX: 10,
+    MAX: 1000, //800
     Ticks4Respawn: 100 // 10 seconds
   }
-
-
 };

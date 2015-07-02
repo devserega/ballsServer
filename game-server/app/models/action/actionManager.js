@@ -1,5 +1,4 @@
 var Queue = require('pomelo-collection').queue;
-var logger = require('pomelo-logger').getLogger(__filename);
 
 /**
  * Action Manager, which is used to control all action
@@ -23,7 +22,7 @@ var ActionManager = function(opts){
 ActionManager.prototype.addAction = function(action){
 	if (action.singleton) {
 		this.abortAction(action.type, action.id);
-  }
+  	}
 		
 	this.actionMap[action.type] = this.actionMap[action.type]||{};
 	

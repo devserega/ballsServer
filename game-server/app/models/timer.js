@@ -1,19 +1,23 @@
 var area = require('./area');
-var EntityType = require('../consts/consts').EntityType;
-var logger = require('pomelo-logger').getLogger(__filename);
+//var EntityType = require('../consts/consts').EntityType;
+//var logger = require('pomelo-logger').getLogger(__filename);
 
 var exp = module.exports;
 
 exp.run = function() {
-  setInterval(tick, 100);
+  setInterval(tick, 100); //100
 };
 
 function tick() {
   //run all the action
   area.actionManager().update();
   area.entityUpdate();
-  area.rankUpdate();
-  area.TreasuresUpdate();
+  //area.rankUpdate();
+  area.treasuresUpdate();
+
+  // misha
+  area.updateMovingUnits();
+  area.sendPositionsToClients();
 }
 
 /**

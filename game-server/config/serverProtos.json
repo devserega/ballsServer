@@ -1,1 +1,74 @@
-{}
+{
+    "onUserLeave": {
+        "required uInt32 code": 1,
+        "required uInt32 playerId": 2
+    },
+
+    "addEntities": {
+        "message Entities" : {
+            "required uInt32 id" : 1,
+            "required uInt32 entityId" : 2,
+            "required uInt32 kindId" : 3,
+            "required string type" : 4,
+            "required uInt32 x" : 5,
+            "required uInt32 y" : 6,
+            "required uInt32 score" : 7,
+            "required string name" : 8,
+            "optional string color" : 9
+        },
+        "repeated Entities entities" : 1
+    },
+
+    "removeEntities": {
+        "repeated uInt32 entities" : 1
+    },
+
+    "area.playerHandler.enterScene" : {
+        "message Data" : {
+            "message Area" : {
+                "required uInt32 id" : 1,
+                "required uInt32 width": 2,
+                "required uInt32 height": 3,
+                "message Entities" : {
+                    "message Player" : {
+                        "required uInt32 entityId" : 1,
+                        "required uInt32 kindId" : 2,
+                        "required string type" : 3,
+                        "required uInt32 x" : 4,
+                        "required uInt32 y" : 5,
+                        "required uInt32 score" : 6,
+                        "required string color": 7,
+                        "optional uInt32 id": 8,
+                        "required string name": 9
+                    },
+                    "message Treasure" : {
+                        "required uInt32 entityId" : 1,
+                        "required uInt32 kindId" : 2,
+                        "required string type" : 3,
+                        "required uInt32 x" : 4,
+                        "required uInt32 y" : 5,
+                        "required uInt32 score" : 6
+                    },
+                    "repeated Player player" : 1,
+                    "repeated Treasure treasure" : 2
+                },
+                "required Entities entities" : 4
+            },
+            "required Area area" : 1,
+            "required uInt32 playerId" : 2,
+            "required uInt32 roomId" : 3,
+            "required string areaServerId" : 4
+        },
+        "required uInt32 code" : 1,
+        "required Data data" : 2
+    },
+
+    "onMoveAll": {
+        "message Targets" : {
+            "required uInt32 entityId" : 1,
+            "required uInt32 x" : 2,
+            "required uInt32 y" : 3
+        },
+        "repeated Targets targets": 1
+    }
+}

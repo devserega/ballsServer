@@ -1,1 +1,10 @@
-{}
+{
+  "area.playerHandler.enterScene": {
+    "required string name": 1,
+    "required uInt32 playerId": 2
+  },
+
+  "gate.gateHandler.queryEntry": {
+    "required string uid": 1
+  }
+}

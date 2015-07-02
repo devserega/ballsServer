@@ -13,7 +13,7 @@ var EntityType = require('../consts/consts').EntityType;
 function Treasure(opts) {
   Entity.call(this, opts);
   this.type = EntityType.TREASURE;
-  this.imgId = opts.imgId;
+  //this.imgId = opts.imgId;
   this.score = opts.score || 0;
 }
 

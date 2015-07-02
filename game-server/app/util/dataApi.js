@@ -1,22 +1,27 @@
 // require json files
-var area = require('../../config/data/area');
-var role = require('../../config/data/role');
-var treasure = require('../../config/data/treasure');
+var areaJSON = require('../../config/data/area');
+//var role = require('../../config/data/role');
+var treasureJSON = require('../../config/data/treasure');
 
+var i = 1;
 /**
  * Data model `new Data()`
  *
  * @param {Array}
  */
 var Data = function(data) {
+  //console.warn('\n ************ Data Created ************ %j\n',i);
+  i++;
   var fields = {};
-  data[1].forEach(function(i, k) {
+  data[0].forEach(function(i, k) {
+    //console.warn(i+' ' +k); //test
     fields[i] = k;
   });
-  data.splice(0, 2);
+  data.splice(0, 1);
 
   var result = {}, ids = [], item;
   data.forEach(function(k) {
+    //console.warn('>'+k+' - '); //test
     item = mapData(fields, k);
     result[item.id] = item;
     ids.push(item.id);
@@ -80,6 +85,27 @@ Data.prototype.random = function() {
   return this.data[rid];
 };
 
+var cactusAmount=0;
+Data.prototype.randomTreasure = function() {
+  var percent = Math.floor(Math.random() * 100);
+  var rid=1;
+  if(percent>0 && percent <= 1){ //5
+    rid =  this.ids[3]; // cactus
+  }
+  else {
+    var length = this.ids.length;
+    rid = this.ids[Math.floor(Math.random() * length)];
+    if (rid === 4)
+      rid++;
+  }
+
+  if(rid === 4){ // cactus
+    cactusAmount++;
+    //console.log("cactus_amount="+cactusAmount);
+  }
+  return this.data[rid];
+};
+
 /**
  * find all item
  *
@@ -91,8 +117,8 @@ Data.prototype.all = function() {
 };
 
 module.exports = {
-  area: new Data(area),
-  role: new Data(role),
-  treasure: new Data(treasure)
+  areaData: new Data(areaJSON),
+  //roleData: new Data(role),
+  treasureData: new Data(treasureJSON)
 };
 
